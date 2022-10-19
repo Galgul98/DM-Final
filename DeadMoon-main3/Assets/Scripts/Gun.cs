@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
     public Text magazineSizeText;
     public Text maxAmmoText;
     AudioSource shootingSound;
+    [SerializeField] private AudioClip reloadSound;
     [SerializeField] private float inaccuracyDistance;
    
     [Header("Rapid Fire")]
