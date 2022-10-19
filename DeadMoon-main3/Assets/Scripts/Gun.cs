@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
     public Text magazineSizeText;
     public Text maxAmmoText;
     AudioSource shootingSound;
-    [SerializeField] private AudioClip reloadSound;
+    AudioSource reloadSound;
     [SerializeField] private float inaccuracyDistance;
    
     [Header("Rapid Fire")]
@@ -51,6 +51,7 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         shootingSound = GetComponent<AudioSource>();
+        reloadSound = GetComponentInChildren<AudioSource>();
         cam = Camera.main.transform;
         rapidFireWait = new WaitForSeconds(0.5f / fireRate);
         reloadWait = new WaitForSeconds(reloadTime);
@@ -66,8 +67,9 @@ public class Gun : MonoBehaviour
     {
         magazineSizeText.text = currentAmmo.ToString();
         maxAmmoText.text = maxAmmo.ToString();
+        reloadSound = GetComponentInChildren<AudioSource>();
 
-       
+
 
         if (inputManager.onFoot.Reload.triggered)
         {
@@ -155,6 +157,8 @@ public class Gun : MonoBehaviour
         if(currentAmmo <= 0 && maxAmmo > 0 )
         {
             gameObject.GetComponentInParent<Animator>().Play("Reload");
+            reloadSound.Play();
+            
             print("reloading...");
          isReloading = true;
          yield return reloadWait;
