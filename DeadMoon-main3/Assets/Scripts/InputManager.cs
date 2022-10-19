@@ -88,8 +88,8 @@ public class InputManager : MonoBehaviour
     {
         isAiming = true;
         crossHair.SetActive(false);
-        gun.GetComponent<Animator>().Play("ADS");
-        gun.GetComponentInChildren<Animator>().Play("Hands_ADS");
+        gun.GetComponentInParent<Animator>().Play("NewHands_ADS");
+        
         if (zoomRoutine != null)
         {
             StopCoroutine(zoomRoutine);
@@ -102,7 +102,7 @@ public class InputManager : MonoBehaviour
     {
         isAiming = false;
         crossHair.SetActive(true);
-        gun.GetComponent<Animator>().Play("Stop_ADS");
+        gun.GetComponentInParent<Animator>().Play("ReleaseAim");
         if (zoomRoutine != null)
         {
             StopCoroutine(zoomRoutine);

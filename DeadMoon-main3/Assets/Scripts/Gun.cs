@@ -154,6 +154,7 @@ public class Gun : MonoBehaviour
          print("reloading...");
          isReloading = true;
          yield return reloadWait;
+            gameObject.GetComponentInParent<Animator>().Play("Reload");
          maxAmmo = maxAmmo - 30 + currentAmmo;
          currentAmmo = magazineTamp;
           print("finished reloading.");
