@@ -96,5 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a6d95edbafba04c9f56f28c12f5251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptMessage: 
   gun: {fileID: 0}
+  playerInteract: {fileID: 0}
   ammoPkgSize: 30
