@@ -66,6 +66,8 @@ public class Gun : MonoBehaviour
         magazineSizeText.text = currentAmmo.ToString();
         maxAmmoText.text = maxAmmo.ToString();
 
+       
+
         if (inputManager.onFoot.Reload.triggered)
         {
             StartCoroutine(Reload());
@@ -151,10 +153,11 @@ public class Gun : MonoBehaviour
     {
         if(currentAmmo <= 0 && maxAmmo > 0 )
         {
-         print("reloading...");
+            gameObject.GetComponentInParent<Animator>().Play("Reload");
+            print("reloading...");
          isReloading = true;
          yield return reloadWait;
-            gameObject.GetComponentInParent<Animator>().Play("Reload");
+           
          maxAmmo = maxAmmo - 30 + currentAmmo;
          currentAmmo = magazineTamp;
           print("finished reloading.");
