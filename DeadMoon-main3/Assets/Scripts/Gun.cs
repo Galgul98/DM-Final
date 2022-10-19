@@ -57,6 +57,15 @@ public class Gun : MonoBehaviour
         magazineTamp = currentAmmo;
         inputManager = GetComponentInParent<InputManager>();
 
+      
+
+
+    }
+    private void Update()
+    {
+        magazineSizeText.text = currentAmmo.ToString();
+        maxAmmoText.text = maxAmmo.ToString();
+
         if (inputManager.onFoot.Reload.triggered)
         {
             StartCoroutine(Reload());
@@ -66,13 +75,6 @@ public class Gun : MonoBehaviour
 
 
 
-    }
-    private void Update()
-    {
-        magazineSizeText.text = currentAmmo.ToString();
-        maxAmmoText.text = maxAmmo.ToString();
-
-       
 
 
     }
@@ -147,26 +149,26 @@ public class Gun : MonoBehaviour
 
      public IEnumerator Reload()
     {
-        //if(currentAmmo <= 0 && maxAmmo > 0 )
-        //{
-         //print("reloading...");
-         //isReloading = true;
-         //yield return reloadWait;
-         //maxAmmo = maxAmmo - 30 + currentAmmo;
-         //currentAmmo = magazineTamp;
-         // print("finished reloading.");
+        if(currentAmmo <= 0 && maxAmmo > 0 )
+        {
+         print("reloading...");
+         isReloading = true;
+         yield return reloadWait;
+         maxAmmo = maxAmmo - 30 + currentAmmo;
+         currentAmmo = magazineTamp;
+          print("finished reloading.");
            
-       // }
+        }
 
-       if (shotgun && currentAmmo <= 0 && maxAmmo > 0)
-       {
-            print("reloading...");
-            isReloading = true;
-            yield return reloadWait;
-            maxAmmo = maxAmmo - 12 + currentAmmo;
-            currentAmmo = magazineTamp;
-            print("finished reloading.");
-       }
+      // if (shotgun && currentAmmo <= 0 && maxAmmo > 0)
+       //{
+         //   print("reloading...");
+           // isReloading = true;
+            //yield return reloadWait;
+            //maxAmmo = maxAmmo - 12 + currentAmmo;
+            //currentAmmo = magazineTamp;
+            //print("finished reloading.");
+       //}
 
         if (maxAmmo <= 0)
         {
